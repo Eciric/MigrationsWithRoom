@@ -18,7 +18,7 @@ import lombok.ToString;
 @Getter
 @NoArgsConstructor
 @ToString
-public class CategoryProduct {
+public class CategoryItem {
     @Embedded public Category category;
     @Relation(
             parentColumn = "categoryId",
