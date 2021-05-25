@@ -31,7 +31,7 @@ public class ExampleActivity extends AppCompatActivity {
         categoryViewModel.getCategories().observe(this, new Observer<List<Category>>() {
             @Override
             public void onChanged(List<Category> categories) {
-                //tu zmieniac UI
+                //tu zmieniac GUI
             }
         });
 
@@ -39,7 +39,7 @@ public class ExampleActivity extends AppCompatActivity {
         itemViewModel.getItems().observe(this, new Observer<List<Item>>() {
             @Override
             public void onChanged(List<Item> items) {
-                //tu zmieniac UI
+                //tu zmieniac GUI
             }
         });
 
@@ -47,7 +47,7 @@ public class ExampleActivity extends AppCompatActivity {
         ownerViewModel.getOwners().observe(this, new Observer<List<Owner>>() {
             @Override
             public void onChanged(List<Owner> owners) {
-                //tu zmieniac UI
+                //tu zmieniac GUI
             }
         });
     }

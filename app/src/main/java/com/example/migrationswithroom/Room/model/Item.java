@@ -24,7 +24,7 @@ public class Item {
     @ColumnInfo(name = "category_id")
     private Long category_Id;
 
-
+    //id w long a nie obiekt category
     public Item(String name, String description, Long category_Id) {
         this.name = name;
         this.description = description;

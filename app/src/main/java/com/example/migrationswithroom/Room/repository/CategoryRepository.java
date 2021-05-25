@@ -20,7 +20,7 @@ public class CategoryRepository {
         categoryDao = database.categoryDao();
         categories = categoryDao.getAll();
     }
-
+    //klasy ktore odpalaja watki w tle i nie ma problemu z dostepem do rooma
     public void insert(Category category){
         new InsertCategoryAsyncTask(categoryDao).execute(category);
     }
