@@ -1,5 +1,6 @@
 package com.example.migrationswithroom.Room.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -15,7 +16,7 @@ import java.util.List;
 public interface ItemDao {
 
     @Query("Select * from item")
-    List<Item> getAll();
+    LiveData<List<Item>> getAll();
 
     @Query("Select * from item where item_name Like :name")
     Item getItemByName(String name);

@@ -1,5 +1,6 @@
 package com.example.migrationswithroom.Room.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -17,7 +18,7 @@ import java.util.List;
 @Dao
 public interface OwnerDao {
     @Query("Select * from owner")
-    List<Owner> getAll();
+    LiveData<List<Owner>> getAll();
 
     @Query("Select * from owner where owner_name Like :name")
     Owner getOwnerByName(String name);

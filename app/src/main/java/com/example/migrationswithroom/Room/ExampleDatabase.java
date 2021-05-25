@@ -22,17 +22,13 @@ public abstract class ExampleDatabase extends RoomDatabase {
 
     public abstract OwnerDao ownerDao();
 
-    private static  ExampleDatabase INSTANCE;
+    private static ExampleDatabase INSTANCE;
 
-    static ExampleDatabase getDatabase(final Context context){
-        if(INSTANCE == null){
-            synchronized (ExampleDatabase.class){
-                if(INSTANCE == null){
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), ExampleDatabase.class, "example_db")
-                            .fallbackToDestructiveMigration()
-                            .build();
-                }
-            }
+    public static synchronized ExampleDatabase getDatabase(Context context) {
+        if (INSTANCE == null) {
+            INSTANCE = Room.databaseBuilder(context.getApplicationContext(), ExampleDatabase.class, "example_db")
+                    .fallbackToDestructiveMigration()
+                    .build();
         }
         return INSTANCE;
     }
