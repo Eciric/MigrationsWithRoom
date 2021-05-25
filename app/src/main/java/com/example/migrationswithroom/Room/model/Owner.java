@@ -26,4 +26,10 @@ public class Owner {
 
     @ColumnInfo(name = "item_id")
     public Long item_id;
+
+    public Owner(String name, String phoneNumber, Long item_id) {
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.item_id = item_id;
+    }
 }
