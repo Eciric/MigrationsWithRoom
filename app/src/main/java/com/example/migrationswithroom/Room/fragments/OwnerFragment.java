@@ -23,6 +23,7 @@ import com.example.migrationswithroom.Room.AddCategoryActivity;
 import com.example.migrationswithroom.Room.AddOwnerActivity;
 import com.example.migrationswithroom.Room.adapter.OwnerAdapter;
 import com.example.migrationswithroom.Room.model.Owner;
+import com.example.migrationswithroom.Room.relations.OwnerItem;
 import com.example.migrationswithroom.Room.view_model.OwnerViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -101,9 +102,9 @@ public class OwnerFragment extends Fragment {
         });
 
         ownerViewModel = new ViewModelProvider(this).get(OwnerViewModel.class);
-        ownerViewModel.getOwners().observe(this, new Observer<List<Owner>>() {
+        ownerViewModel.getOwnersWithItem().observe(this, new Observer<List<OwnerItem>>() {
             @Override
-            public void onChanged(List<Owner> owners) {
+            public void onChanged(List<OwnerItem> owners) {
                 adapter.setOwners(owners);
             }
         });

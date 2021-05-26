@@ -11,12 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.migrationswithroom.R;
 import com.example.migrationswithroom.Room.model.Owner;
+import com.example.migrationswithroom.Room.relations.OwnerItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.OwnerHolder> {
-    private List<Owner> owners = new ArrayList<>();
+    private List<OwnerItem> owners = new ArrayList<>();
 
     @NonNull
     @Override
@@ -29,10 +30,11 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.OwnerHolder>
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull OwnerHolder holder, int position) {
-        Owner currentOwner = owners.get(position);
-        holder.textViewOwnerId.setText(Double.toString(currentOwner.getOwnerId()));
-        holder.textViewOwnerName.setText(currentOwner.getName());
-        holder.textViewPhoneNumber.setText(currentOwner.getPhoneNumber());
+        OwnerItem currentOwner = owners.get(position);
+        holder.textViewOwnerId.setText(Long.toString(currentOwner.getOwner().getOwnerId()));
+        holder.textViewOwnerName.setText(currentOwner.getOwner().getName());
+        holder.textViewPhoneNumber.setText(currentOwner.getOwner().getPhoneNumber());
+        holder.textViewOwnerItem.setText(currentOwner.getItem().getName());
     }
 
     @Override
@@ -40,25 +42,27 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.OwnerHolder>
         return owners.size();
     }
 
-    public void setOwners(List<Owner> owners){
+    public void setOwners(List<OwnerItem> owners){
         this.owners = owners;
         notifyDataSetChanged();
     }
 
     public Owner getOwnerAt(int position){
-        return owners.get(position);
+        return owners.get(position).getOwner();
     }
 
     class OwnerHolder extends RecyclerView.ViewHolder{
         TextView textViewOwnerId;
         TextView textViewOwnerName;
         TextView textViewPhoneNumber;
+        TextView textViewOwnerItem;
 
         public OwnerHolder(@NonNull View itemView) {
             super(itemView);
             textViewOwnerId = itemView.findViewById(R.id.textViewOwnerId);
             textViewOwnerName = itemView.findViewById(R.id.textViewOwnerName);
             textViewPhoneNumber = itemView.findViewById(R.id.textViewOwnerPhoneNumber);
+            textViewOwnerItem = itemView.findViewById(R.id.textViewOwnerItem);
         }
     }
 }

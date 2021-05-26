@@ -22,7 +22,9 @@ import com.example.migrationswithroom.R;
 import com.example.migrationswithroom.Room.AddCategoryActivity;
 import com.example.migrationswithroom.Room.AddItemActivity;
 import com.example.migrationswithroom.Room.adapter.ItemAdapter;
+import com.example.migrationswithroom.Room.model.Category;
 import com.example.migrationswithroom.Room.model.Item;
+import com.example.migrationswithroom.Room.view_model.CategoryViewModel;
 import com.example.migrationswithroom.Room.view_model.ItemViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -36,6 +38,7 @@ import java.util.List;
 public class ItemFragment extends Fragment {
 
     private ItemViewModel itemViewModel;
+    private CategoryViewModel categoryViewModel;
     private TextView name;
     private FloatingActionButton buttonAddItem;
 

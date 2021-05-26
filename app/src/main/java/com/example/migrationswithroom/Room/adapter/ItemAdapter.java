@@ -7,13 +7,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.migrationswithroom.R;
+import com.example.migrationswithroom.Room.model.Category;
 import com.example.migrationswithroom.Room.model.Item;
+import com.example.migrationswithroom.Room.view_model.CategoryViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
     private List<Item> items = new ArrayList<>();
@@ -53,14 +57,14 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
         private TextView textViewId;
         private TextView textViewName;
         private TextView textViewDescription;
-        private TextView textViewCategory;
 
         public ItemHolder(@NonNull View itemView) {
             super(itemView);
             textViewId = itemView.findViewById(R.id.textViewItemId);
             textViewName = itemView.findViewById(R.id.textViewItemName);
             textViewDescription = itemView.findViewById(R.id.textViewItemDescription);
-            textViewCategory = itemView.findViewById(R.id.textViewItemCategory);
+
+
         }
     }
 }

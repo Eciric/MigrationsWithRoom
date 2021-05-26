@@ -10,17 +10,20 @@ import com.example.migrationswithroom.Room.dao.ItemDao;
 import com.example.migrationswithroom.Room.dao.OwnerDao;
 import com.example.migrationswithroom.Room.model.Item;
 import com.example.migrationswithroom.Room.model.Owner;
+import com.example.migrationswithroom.Room.relations.OwnerItem;
 
 import java.util.List;
 
 public class OwnerRepository {
     private OwnerDao ownerDao;
     private LiveData<List<Owner>> owners;
+    private LiveData<List<OwnerItem>> ownersWithItem;
 
     public OwnerRepository(Application application){
         ExampleDatabase database = ExampleDatabase.getDatabase(application);
         ownerDao = database.ownerDao();
         owners = ownerDao.getAll();
+        ownersWithItem = ownerDao.getOwnerAndItem();
     }
 
     public void insert(Owner owner){
@@ -37,6 +40,9 @@ public class OwnerRepository {
 
     public LiveData<List<Owner>> getOwners() {
         return owners;
+    }
+    public LiveData<List<OwnerItem>> getOwnersWithItem() {
+        return ownersWithItem;
     }
 
     private static class InsertOwnerAsyncTask extends AsyncTask<Owner, Void, Void> {
