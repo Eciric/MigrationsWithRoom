@@ -3,15 +3,100 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/purple_700"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
+    <View
+        android:id="@+id/neonPinkShape2"
+        android:layout_width="400dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="135dp"
+        android:background="@drawable/shape"
+        android:rotation="32"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnGoToSQLiteActivity" />
+
+    <View
+        android:id="@+id/darkShape"
+        android:layout_width="400dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="704dp"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/shape3"
+        android:rotation="32"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/violetShape"
+        android:layout_width="500dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="624dp"
+        android:background="@drawable/shape2"
+        android:rotation="32"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/neonPinkShape"
+        android:layout_width="400dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="52dp"
+        android:background="@drawable/shape"
+        android:rotation="32"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/VioletShape"
+        android:layout_width="500dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/shape2"
+        android:rotation="32"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/neonPinkShape" />
+
+    <View
+        android:id="@+id/DarkShape"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="136dp"
+        android:layout_marginEnd="228dp"
+        android:background="@drawable/shape3"
+        android:rotation="32"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnGoToRoomActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="280dp"
+        android:paddingLeft="32dp"
+        android:paddingTop="16dp"
+        android:paddingRight="32dp"
+        android:paddingBottom="16dp"
         android:text="Go to room"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnGoToSQLiteActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:paddingLeft="32dp"
+        android:paddingTop="16dp"
+        android:paddingRight="32dp"
+        android:paddingBottom="16dp"
+        android:text="Go to SQLite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnGoToRoomActivity" />
 </androidx.constraintlayout.widget.ConstraintLayout>
