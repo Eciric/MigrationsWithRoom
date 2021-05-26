@@ -2,13 +2,24 @@ package com.example.migrationswithroom.Room.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.migrationswithroom.R;
+import com.example.migrationswithroom.Room.adapter.OwnerAdapter;
+import com.example.migrationswithroom.Room.model.Owner;
+import com.example.migrationswithroom.Room.view_model.OwnerViewModel;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +27,8 @@ import com.example.migrationswithroom.R;
  * create an instance of this fragment.
  */
 public class OwnerFragment extends Fragment {
+
+    private OwnerViewModel ownerViewModel;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -55,6 +68,24 @@ public class OwnerFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        RecyclerView recyclerView = getView().findViewById(R.id.recycle_view_owner);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setHasFixedSize(true);
+        final OwnerAdapter adapter = new OwnerAdapter();
+        recyclerView.setAdapter(adapter);
+
+        ownerViewModel = new ViewModelProvider(this).get(OwnerViewModel.class);
+        ownerViewModel.getOwners().observe(this, new Observer<List<Owner>>() {
+            @Override
+            public void onChanged(List<Owner> owners) {
+                adapter.setOwners(owners);
+            }
+        });
     }
 
     @Override
