@@ -1,5 +1,6 @@
 package com.example.migrationswithroom.Room.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -7,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,11 +16,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.migrationswithroom.R;
+import com.example.migrationswithroom.Room.AddCategoryActivity;
+import com.example.migrationswithroom.Room.AddOwnerActivity;
 import com.example.migrationswithroom.Room.adapter.OwnerAdapter;
 import com.example.migrationswithroom.Room.model.Owner;
 import com.example.migrationswithroom.Room.view_model.OwnerViewModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -31,6 +37,7 @@ public class OwnerFragment extends Fragment {
 
     private OwnerViewModel ownerViewModel;
     private TextView name;
+    private FloatingActionButton buttonAddOwner;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -83,6 +90,16 @@ public class OwnerFragment extends Fragment {
         name = getView().findViewById(R.id.name_text);
         name.setText("Owner Fragment");
 
+        buttonAddOwner = getView().findViewById(R.id.button_add_owner);
+        buttonAddOwner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AddOwnerActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
         ownerViewModel = new ViewModelProvider(this).get(OwnerViewModel.class);
         ownerViewModel.getOwners().observe(this, new Observer<List<Owner>>() {
             @Override
@@ -90,6 +107,20 @@ public class OwnerFragment extends Fragment {
                 adapter.setOwners(owners);
             }
         });
+
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT ) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                ownerViewModel.delete(adapter.getOwnerAt(viewHolder.getAdapterPosition()));
+                Toast.makeText(getContext(), "Owner deleted!", Toast.LENGTH_SHORT).show();
+            }
+        }).attachToRecyclerView(recyclerView);
     }
 
     @Override

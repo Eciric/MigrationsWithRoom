@@ -45,6 +45,10 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.OwnerHolder>
         notifyDataSetChanged();
     }
 
+    public Owner getOwnerAt(int position){
+        return owners.get(position);
+    }
+
     class OwnerHolder extends RecyclerView.ViewHolder{
         TextView textViewOwnerId;
         TextView textViewOwnerName;

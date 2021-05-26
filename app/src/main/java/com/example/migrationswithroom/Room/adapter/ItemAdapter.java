@@ -45,6 +45,10 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
         notifyDataSetChanged();
     }
 
+    public Item getItemAt(int position){
+        return items.get(position);
+    }
+
     class ItemHolder extends RecyclerView.ViewHolder {
         private TextView textViewId;
         private TextView textViewName;

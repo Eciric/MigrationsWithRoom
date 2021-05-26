@@ -44,6 +44,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         notifyDataSetChanged();
     }
 
+    public Category getCategoryAt(int position){
+        return categoryList.get(position);
+    }
+
     class CategoryHolder extends RecyclerView.ViewHolder{
         public TextView textViewCategoryId;
         public TextView textViewCategoryName;

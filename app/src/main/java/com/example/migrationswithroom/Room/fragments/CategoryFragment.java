@@ -1,5 +1,6 @@
 package com.example.migrationswithroom.Room.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -7,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,11 +16,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.migrationswithroom.R;
+import com.example.migrationswithroom.Room.AddCategoryActivity;
+import com.example.migrationswithroom.Room.RoomActivity;
 import com.example.migrationswithroom.Room.adapter.CategoryAdapter;
 import com.example.migrationswithroom.Room.model.Category;
 import com.example.migrationswithroom.Room.view_model.CategoryViewModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -31,6 +37,7 @@ public class CategoryFragment extends Fragment {
 
     private CategoryViewModel categoryViewModel;
     private TextView name;
+    private FloatingActionButton buttonAddCategory;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -70,6 +77,7 @@ public class CategoryFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -82,6 +90,17 @@ public class CategoryFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         name = getView().findViewById(R.id.name_text);
         name.setText("Category Fragment");
+        buttonAddCategory = getView().findViewById(R.id.button_add_category);
+        buttonAddCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AddCategoryActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+
 
         categoryViewModel = new ViewModelProvider(this).get(CategoryViewModel.class);
         categoryViewModel.getCategories().observe(this, new Observer<List<Category>>() {
@@ -90,6 +109,21 @@ public class CategoryFragment extends Fragment {
                 adapter.setCategoryList(categories);
             }
         });
+
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT ) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                categoryViewModel.delete(adapter.getCategoryAt(viewHolder.getAdapterPosition()));
+                Toast.makeText(getContext(), "Category deleted!", Toast.LENGTH_SHORT).show();
+            }
+        }).attachToRecyclerView(recyclerView);
+
     }
 
     @Override
