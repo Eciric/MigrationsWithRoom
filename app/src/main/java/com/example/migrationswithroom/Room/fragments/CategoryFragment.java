@@ -89,7 +89,7 @@ public class CategoryFragment extends Fragment {
         final CategoryAdapter adapter = new CategoryAdapter();
         recyclerView.setAdapter(adapter);
         name = getView().findViewById(R.id.name_text);
-        name.setText("Category Fragment");
+        name.setText("Categories");
         buttonAddCategory = getView().findViewById(R.id.button_add_category);
         buttonAddCategory.setOnClickListener(new View.OnClickListener() {
             @Override

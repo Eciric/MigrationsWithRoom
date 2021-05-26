@@ -30,7 +30,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
     @Override
     public void onBindViewHolder(@NonNull ItemHolder holder, int position) {
         Item currentItem = items.get(position);
-        holder.textViewId.setText(Double.toString(currentItem.getCategory_Id()));
+        holder.textViewId.setText(Long.toString(currentItem.getCategory_Id()));
         holder.textViewName.setText(currentItem.getName());
         holder.textViewDescription.setText(currentItem.getDescription());
     }
@@ -53,12 +53,14 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
         private TextView textViewId;
         private TextView textViewName;
         private TextView textViewDescription;
+        private TextView textViewCategory;
 
         public ItemHolder(@NonNull View itemView) {
             super(itemView);
             textViewId = itemView.findViewById(R.id.textViewItemId);
             textViewName = itemView.findViewById(R.id.textViewItemName);
             textViewDescription = itemView.findViewById(R.id.textViewItemDescription);
+            textViewCategory = itemView.findViewById(R.id.textViewItemCategory);
         }
     }
 }

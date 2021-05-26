@@ -88,7 +88,7 @@ public class ItemFragment extends Fragment {
         final ItemAdapter adapter = new ItemAdapter();
         recyclerView.setAdapter(adapter);
         name = getView().findViewById(R.id.name_text);
-        name.setText("Item Fragment");
+        name.setText("Items");
 
         buttonAddItem = getView().findViewById(R.id.button_add_item);
         buttonAddItem.setOnClickListener(new View.OnClickListener() {

@@ -88,7 +88,7 @@ public class OwnerFragment extends Fragment {
         final OwnerAdapter adapter = new OwnerAdapter();
         recyclerView.setAdapter(adapter);
         name = getView().findViewById(R.id.name_text);
-        name.setText("Owner Fragment");
+        name.setText("Owners");
 
         buttonAddOwner = getView().findViewById(R.id.button_add_owner);
         buttonAddOwner.setOnClickListener(new View.OnClickListener() {

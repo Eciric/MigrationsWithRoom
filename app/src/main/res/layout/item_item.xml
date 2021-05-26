@@ -14,24 +14,45 @@
 
             <TextView
                 android:id="@+id/textViewItemId"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="3dp"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textAlignment="textStart"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/textViewItemName"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewItemCategory"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/textViewItemDescription"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="3dp"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textAlignment="textEnd"
+                android:textSize="16sp" />
         </LinearLayout>
 
     </RelativeLayout>
