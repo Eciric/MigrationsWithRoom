@@ -28,7 +28,7 @@ public interface OwnerDao {
 
     @Transaction
     @Query("Select * from item inner join Owner where itemId = item_id")
-    List<OwnerItem> getOwnerAndItem();
+    LiveData<List<OwnerItem>> getOwnerAndItem();
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertOwner(Owner... owners);

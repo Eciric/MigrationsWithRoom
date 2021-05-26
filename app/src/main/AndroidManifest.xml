@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MigrationsWithRoom">
-        <activity android:name=".Room.RoomActivity"></activity>
+        <activity android:name=".Room.AddOwnerActivity" android:parentActivityName=".Room.RoomActivity"/>
+        <activity android:name=".Room.AddCategoryActivity" android:parentActivityName=".Room.RoomActivity"/>
+        <activity android:name=".Room.AddItemActivity" android:parentActivityName=".Room.RoomActivity"/>
+        <activity android:name=".Room.RoomActivity" />
         <activity android:name=".Room.ExampleActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

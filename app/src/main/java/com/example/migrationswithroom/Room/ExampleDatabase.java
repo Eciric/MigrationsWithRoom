@@ -16,7 +16,7 @@ import com.example.migrationswithroom.Room.model.Category;
 import com.example.migrationswithroom.Room.model.Item;
 import com.example.migrationswithroom.Room.model.Owner;
 
-@Database(entities = {Category.class, Item.class, Owner.class}, version = 1, exportSchema = false)
+@Database(entities = {Category.class, Item.class, Owner.class}, version = 2, exportSchema = false)
 public abstract class ExampleDatabase extends RoomDatabase {
 
     public abstract CategoryDao categoryDao();
@@ -62,9 +62,7 @@ public abstract class ExampleDatabase extends RoomDatabase {
             categoryDao.insertCategory(new Category("Fruit"));
 
             itemDao.insertItem(new Item("Carrot", "small, peeled", categoryDao.getCategoryByName("Vegetable").getCategoryId()));
-            itemDao.insertItem(new Item("Salad", "green", categoryDao.getCategoryByName("Vegetable").getCategoryId()));
             itemDao.insertItem(new Item("Beef", "2kg", categoryDao.getCategoryByName("Meat").getCategoryId()));
-            itemDao.insertItem(new Item("Banana", "green, from Africa", categoryDao.getCategoryByName("Fruit").getCategoryId()));
             itemDao.insertItem(new Item("Apple", "green, Polish product", categoryDao.getCategoryByName("Fruit").getCategoryId()));
 
             ownerDao.insertOwner(new Owner("Biedronka","789456132", itemDao.getItemByName("Beef").getItemId()));

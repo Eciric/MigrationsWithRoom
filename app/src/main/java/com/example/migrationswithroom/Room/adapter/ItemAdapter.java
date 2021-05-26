@@ -7,13 +7,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.migrationswithroom.R;
+import com.example.migrationswithroom.Room.model.Category;
 import com.example.migrationswithroom.Room.model.Item;
+import com.example.migrationswithroom.Room.view_model.CategoryViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
     private List<Item> items = new ArrayList<>();
@@ -30,7 +34,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
     @Override
     public void onBindViewHolder(@NonNull ItemHolder holder, int position) {
         Item currentItem = items.get(position);
-        holder.textViewId.setText(Double.toString(currentItem.getCategory_Id()));
+        holder.textViewId.setText(Long.toString(currentItem.getCategory_Id()));
         holder.textViewName.setText(currentItem.getName());
         holder.textViewDescription.setText(currentItem.getDescription());
     }
@@ -45,6 +49,10 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
         notifyDataSetChanged();
     }
 
+    public Item getItemAt(int position){
+        return items.get(position);
+    }
+
     class ItemHolder extends RecyclerView.ViewHolder {
         private TextView textViewId;
         private TextView textViewName;
@@ -55,6 +63,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemHolder> {
             textViewId = itemView.findViewById(R.id.textViewItemId);
             textViewName = itemView.findViewById(R.id.textViewItemName);
             textViewDescription = itemView.findViewById(R.id.textViewItemDescription);
+
+
         }
     }
 }
