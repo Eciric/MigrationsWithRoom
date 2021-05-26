@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.migrationswithroom.R;
 import com.example.migrationswithroom.Room.adapter.CategoryAdapter;
@@ -29,6 +30,7 @@ import java.util.List;
 public class CategoryFragment extends Fragment {
 
     private CategoryViewModel categoryViewModel;
+    private TextView name;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -78,6 +80,8 @@ public class CategoryFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         final CategoryAdapter adapter = new CategoryAdapter();
         recyclerView.setAdapter(adapter);
+        name = getView().findViewById(R.id.name_text);
+        name.setText("Category Fragment");
 
         categoryViewModel = new ViewModelProvider(this).get(CategoryViewModel.class);
         categoryViewModel.getCategories().observe(this, new Observer<List<Category>>() {
