@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.migrationswithroom.Room.dao.CategoryDao;
@@ -16,7 +17,7 @@ import com.example.migrationswithroom.Room.model.Category;
 import com.example.migrationswithroom.Room.model.Item;
 import com.example.migrationswithroom.Room.model.Owner;
 
-@Database(entities = {Category.class, Item.class, Owner.class}, version = 2, exportSchema = false)
+@Database(entities = {Category.class, Item.class, Owner.class}, version = 4, exportSchema = true)
 public abstract class ExampleDatabase extends RoomDatabase {
 
     public abstract CategoryDao categoryDao();
@@ -30,12 +31,30 @@ public abstract class ExampleDatabase extends RoomDatabase {
     public static synchronized ExampleDatabase getDatabase(Context context) {
         if (INSTANCE == null) {
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(), ExampleDatabase.class, "example_db")
+                    .addMigrations(MIGRATION_2_3, MIGRATION_3_4)
                     .fallbackToDestructiveMigration()
                     .addCallback(roomCalback)
                     .build();
         }
         return INSTANCE;
     }
+
+    static final Migration MIGRATION_2_3 = new Migration(2, 3) {
+        @Override
+        public void migrate(SupportSQLiteDatabase database) {
+            database.execSQL("ALTER TABLE category "
+                    + " ADD COLUMN description Varchar(255)");
+        }
+    };
+
+    static final Migration MIGRATION_3_4 = new Migration(3, 4) {
+        @Override
+        public void migrate(SupportSQLiteDatabase database) {
+            database.execSQL("ALTER TABLE category "
+                    + " rename to category_table");
+        }
+    };
+
     private static RoomDatabase.Callback roomCalback = new RoomDatabase.Callback() {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
