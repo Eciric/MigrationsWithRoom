@@ -1,4 +1,4 @@
-package com.example.migrationswithroom;
+package com.example.migrationswithroom.SQLite;
 
 import android.content.ContentValues;
 import android.content.Context;
