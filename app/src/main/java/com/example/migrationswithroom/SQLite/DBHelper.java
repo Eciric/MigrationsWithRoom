@@ -54,19 +54,19 @@ public class DBHelper extends SQLiteOpenHelper {
         return !(result == -1);
     }
 
-    public void deleteCategories() {
+    public void deleteCategory(int id) {
         SQLiteDatabase DB = this.getWritableDatabase();
-        DB.execSQL("DELETE FROM Categories");
+        DB.execSQL("DELETE FROM Categories WHERE id =" + id);
     }
 
-    public void deleteItems() {
+    public void deleteItem(int id) {
         SQLiteDatabase DB = this.getWritableDatabase();
-        DB.execSQL("DELETE FROM Items");
+        DB.execSQL("DELETE FROM Items WHERE id =" + id);
     }
 
-    public void deleteOwners() {
+    public void deleteOwner(int id) {
         SQLiteDatabase DB = this.getWritableDatabase();
-        DB.execSQL("DELETE FROM Owners");
+        DB.execSQL("DELETE FROM Owners WHERE id =" + id);
     }
 
     public Cursor getCategories() {
