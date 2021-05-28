@@ -84,7 +84,7 @@ public class OwnersFragment extends Fragment {
             String name = data.getString(1);
             String phone = data.getString(2);
             String itemID = data.getString(3);
-            String string = "ID: " + id + " Name: "+ name + " Phone: "+ phone + " Category ID: " + itemID;
+            String string = "ID: " + id + " Name: "+ name + " Phone: "+ phone + " Item ID: " + itemID;
             arrayList.add(string);
         }
         ListAdapter listAdapter = new ArrayAdapter<>(getContext(), R.layout.sqlite_list_view, R.id.item_text, arrayList);
