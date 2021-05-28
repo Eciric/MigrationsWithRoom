@@ -9,6 +9,7 @@
         android:textColor="@color/white"
         android:gravity="left"
         android:paddingStart="32dp"
+        android:paddingEnd="8dp"
         android:textColorHighlight="@color/white"
         android:textSize="25sp"
         android:layout_width="fill_parent"
