@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final Button btnRoom = findViewById(R.id.btnGoToRoomActivity);
+        getSupportActionBar().hide();
         btnRoom.setOnClickListener(v->{
             Intent intent = new Intent(this, RoomActivity.class);
             startActivity(intent);
