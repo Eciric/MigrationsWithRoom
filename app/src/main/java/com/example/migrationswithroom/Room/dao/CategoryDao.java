@@ -16,17 +16,17 @@ import java.util.List;
 
 @Dao
 public interface CategoryDao {
-    @Query("Select * from category")
+    @Query("Select * from category_table")
     LiveData<List<Category>> getAll();
 
-    @Query("Select * from category where category_name Like :name")
+    @Query("Select * from category_table where category_name Like :name")
     Category getCategoryByName(String name);
 
-    @Query("Select * from category where categoryId like :id")
+    @Query("Select * from category_table where categoryId like :id")
     Category getCategoryById(Long id);
 
     @Transaction
-    @Query("Select * from category")
+    @Query("Select * from category_table")
     List<CategoryItem> getCategoryAndItems();
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
