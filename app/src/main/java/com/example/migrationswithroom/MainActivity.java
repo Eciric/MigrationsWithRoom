@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
+import com.amitshekhar.DebugDB;
 import com.example.migrationswithroom.Room.RoomActivity;
 import com.example.migrationswithroom.SQLite.SqliteActivity;
 
@@ -27,5 +28,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, SqliteActivity.class);
             startActivity(intent);
         });
+
+        System.out.println("BAZA: " + DebugDB.getAddressLog());
     }
 }
